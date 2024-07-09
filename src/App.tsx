@@ -19,6 +19,7 @@ function App() {
     setGameStatus({ 'gameOver': false, 'wordGuessed': false });
     let newRows = getRows(5, newChosenWord);
     setRows(newRows)
+    console.log(limit)
   };
 
   const getRows = (limit: number, chosenWord: string): JSX.Element[] => {

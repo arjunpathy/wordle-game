@@ -15,7 +15,7 @@ const InputBox = ({
 }: LetterInputBoxProps) => {
   const [values, setValues] = useState(Array(5).fill(""));
   const boxColor = ["silver", "darkseagreen", "sandybrown"];
-
+  console.log(isDisabled)
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     index: number
@@ -63,7 +63,7 @@ const InputBox = ({
                 ? boxColor[enteredCharacters[index]]
                 : "",
             }}
-            // disabled={isDisabled}
+          // disabled={isDisabled}
           />
         );
       })}
