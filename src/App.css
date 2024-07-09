@@ -1,0 +1,70 @@
+.letter-input-container {
+    display: flex;
+    gap: 10px;
+    margin-top:10px ; 
+  }
+  
+  .letter-input {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 25px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  
+  .letter-input-focus , .letter-input:focus {
+    outline: none;
+    /* border-color: #007bff; */
+    border-color: cadetblue;
+    box-shadow: 0 0 2px rgba(0, 123, 255, 0.4);
+  }
+
+  body{
+    background-color: cornsilk;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .guess-count{
+    gap: 10px;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+  }
+  .message-box{
+    /* display: flex; */
+    margin-top: 20px;
+    text-align: center;
+    /* justify-content: center; */
+    font-size: 1.5em;
+    font-family:Arial, Helvetica, sans-serif;
+  }
+.message-box button{
+  height: 30px;
+  color: white;
+  background-color: cadetblue;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 12px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+
+.reset-icon-div{
+  padding-top: 5%;
+    padding-left: 10%;
+}
+.reset-icon{
+  color: white;
+  background-color: coral;
+  padding: 20%;
+  border-radius: 50%;
+  height: 2em;
+  width: 1.5em;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+}
