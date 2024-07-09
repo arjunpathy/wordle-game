@@ -16,7 +16,10 @@ interface InputRowProps {
   setTryCount: (tryCount: number | ((prevTryCount: number) => number)) => void;
   gameStatus: GameStatus;
   setGameStatus: (status: GameStatus) => void;
+  keyColors: Record<string, number>;
+  setKeyColors: (color: Record<string, number>) => void;
 }
+
 let newTryCount = 0;
 
 const InputRow = ({
@@ -27,10 +30,12 @@ const InputRow = ({
   setTryCount,
   gameStatus,
   setGameStatus,
+  keyColors,
+  setKeyColors
 }: InputRowProps) => {
 
   const [availableCharacter, setAvailableChar] = useState<number[]>([]);
-  const [isDisabled, setDisabled ] = useState(false);
+  const [isDisabled, setDisabled] = useState(false);
 
   useEffect(() => {
     focusFirstInput(newTryCount);
@@ -45,31 +50,46 @@ const InputRow = ({
       }
     }
 
-    console.log("dis ",tryCount != rowIndex || gameStatus.gameOver)
-    console.log("val ",tryCount ,rowIndex , gameStatus.gameOver)
+    // console.log("dis ", tryCount != rowIndex || gameStatus.gameOver)
+    // console.log("val ", tryCount, rowIndex, gameStatus.gameOver)
     setDisabled(tryCount != rowIndex || gameStatus.gameOver)
   };
 
   const validateAnswer = (answer: string) => {
+    answer  = answer.toLocaleLowerCase();
     console.log(chosenWord, answer);
     if (words.includes(answer)) {
       let entryArr: number[] = [];
       [...answer].forEach((char, index) => {
-        if (char === chosenWord[index]) entryArr.push(1);
-        else if (chosenWord.includes(char)) entryArr.push(2);
-        else entryArr.push(0);
+        let keys = keyColors;
+        if (char === chosenWord[index]) {
+          entryArr.push(1);
+          keys[char] = 1;
+        }
+        else if (chosenWord.includes(char)) {
+          entryArr.push(2);
+          keys[char] = keys[char] == 1 ? 1 : 2;
+        }
+        else { 
+          entryArr.push(0);
+          keys[char] = 0;
+        }
+        console.log(keys)
+        setKeyColors(keys)
       });
 
       // console.log(entryArr);
       setAvailableChar(entryArr);
-      
+
       setTryCount((prevTryCount) => {
         const newTryCount = prevTryCount + 1;
-        let gameStatus = {"gameOver": chosenWord === answer || newTryCount === limit , "wordGuessed": chosenWord === answer}
+        let gameStatus = { "gameOver": chosenWord === answer || newTryCount === limit, "wordGuessed": chosenWord === answer }
         setGameStatus(gameStatus);
         focusFirstInput(newTryCount);
         return newTryCount;
       });
+
+
 
     } else {
       alert("Not a valid word!");
@@ -82,7 +102,7 @@ const InputRow = ({
         key={rowIndex}
         enteredCharacters={availableCharacter}
         validateAnswer={validateAnswer}
-        isDisabled= {isDisabled}
+        isDisabled={isDisabled}
       />
     </div>
   );
