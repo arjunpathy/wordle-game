@@ -66,7 +66,7 @@ function App() {
         <div className="title">
           <h1> WORDLE</h1>
         </div>
-        <div style={{ "display": "flex" }}>
+        <div className="rows-container">
           <div>
             {rows}
           </div>

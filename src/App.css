@@ -61,7 +61,10 @@ body {
   padding: 0 12px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
-
+.rows-container{
+  display: flex;
+    height: 40%;
+  }
 .reset-icon-div {
   padding-top: 5%;
   padding-left: 10%;
@@ -120,12 +123,14 @@ body {
 
 @media only screen and (max-width: 600px) {
   .letter-input {
-    width: 30px;
-    height: 30px;
-    font-size: 15px;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
   }
   .reset-icon {
     height: 20px;
     width: 20px;
+    font-size: 15px;
   }
+  
 }
