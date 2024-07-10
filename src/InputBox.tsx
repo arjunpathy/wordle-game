@@ -15,7 +15,7 @@ const InputBox = ({
 }: LetterInputBoxProps) => {
   const [values, setValues] = useState(Array(5).fill(""));
   const boxColor = ["silver", "darkseagreen", "sandybrown"];
-  console.log(isDisabled)
+  // console.log(isDisabled)
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     index: number
@@ -23,7 +23,7 @@ const InputBox = ({
     const newValues = [...values];
     newValues[index] = e.target.value;
     setValues(newValues);
-    console.log(newValues);
+    // console.log(newValues);
 
     if (e.target.value && e.target.nextSibling) {
       (e.target.nextSibling as HTMLInputElement).focus();

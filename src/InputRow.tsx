@@ -52,34 +52,35 @@ const InputRow = ({
 
     // console.log("dis ", tryCount != rowIndex || gameStatus.gameOver)
     // console.log("val ", tryCount, rowIndex, gameStatus.gameOver)
-    setDisabled(tryCount != rowIndex || gameStatus.gameOver)
+    // setDisabled(tryCount != rowIndex || gameStatus.gameOver)
   };
 
   const validateAnswer = (answer: string) => {
     answer  = answer.toLocaleLowerCase();
     console.log(chosenWord, answer);
+
     if (words.includes(answer)) {
       let entryArr: number[] = [];
+      let keys = {...keyColors};
+
       [...answer].forEach((char, index) => {
-        let keys = keyColors;
         if (char === chosenWord[index]) {
           entryArr.push(1);
           keys[char] = 1;
         }
         else if (chosenWord.includes(char)) {
           entryArr.push(2);
-          keys[char] = keys[char] == 1 ? 1 : 2;
+          keys[char] = keys[char] === 1 ? 1 : 2;
         }
         else { 
           entryArr.push(0);
           keys[char] = 0;
         }
-        console.log(keys)
-        setKeyColors(keys)
       });
-
+      
       // console.log(entryArr);
       setAvailableChar(entryArr);
+      setKeyColors(keys)
 
       setTryCount((prevTryCount) => {
         const newTryCount = prevTryCount + 1;

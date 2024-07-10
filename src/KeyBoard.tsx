@@ -13,7 +13,7 @@ const KeyBoard = ({keyColors} : KeyBoardProps ) => {
         {
             Object.keys(keyColors).map( letter =>{
                 return <span 
-                 id={letter}
+                 key={letter+keyColors[letter]}
                 className="keys" 
                 style={{ backgroundColor: boxColor[keyColors[letter]] }}>
                     {letter.toUpperCase()}

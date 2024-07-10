@@ -2,8 +2,17 @@ import words from "./assets/data/wordList";
 import "./App.css";
 import InputRow from "./InputRow";
 import { useState, useEffect } from "react";
-import { FaUndoAlt } from "react-icons/fa";
+import { RxReset, RxQuestionMark } from "react-icons/rx";
 import KeyBoard from "./KeyBoard";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Modal, Button } from 'react-bootstrap';
+
+
+const defaultKeyColors = {
+  a: 3, b: 3, c: 3, d: 3, e: 3, f: 3, g: 3, h: 3, i: 3, j: 3,
+  k: 3, l: 3, m: 3, n: 3, o: 3, p: 3, q: 3, r: 3, s: 3, t: 3,
+  u: 3, v: 3, w: 3, x: 3, y: 3, z: 3
+};
 
 function App() {
   const [chosenWord, setChosenWord] = useState("");
@@ -11,12 +20,12 @@ function App() {
   const [limit, setLimit] = useState(5);
   const [gameStatus, setGameStatus] = useState({ 'gameOver': false, 'wordGuessed': false });
   const [rows, setRows] = useState<JSX.Element[] | null>(null);
-  const defaultKeyColors = {
-    a: 3, b: 3, c: 3, d: 3, e: 3, f: 3, g: 3, h: 3, i: 3, j: 3,
-    k: 3, l: 3, m: 3, n: 3, o: 3, p: 3, q: 3, r: 3, s: 3, t: 3,
-    u: 3, v: 3, w: 3, x: 3, y: 3, z: 3
-  }
-  const [keyColors, setKeyColors] = useState<Record<string, number>>(defaultKeyColors);
+  const [keyColors, setKeyColors] = useState<Record<string, number>>({ ...defaultKeyColors });
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const startGame = () => {
     const newChosenWord = words[Math.floor(Math.random() * words.length)];
@@ -24,10 +33,9 @@ function App() {
     setTryCount(0);
     setLimit(5);
     setGameStatus({ 'gameOver': false, 'wordGuessed': false });
-    let newRows = getRows(5, newChosenWord);
-    setRows(newRows)
-    setKeyColors(defaultKeyColors)
-    console.log(limit, keyColors)
+    setRows(getRows(5, newChosenWord));
+    setKeyColors({ ...defaultKeyColors });
+    console.log(defaultKeyColors, keyColors)
   };
 
   const getRows = (limit: number, chosenWord: string): JSX.Element[] => {
@@ -49,17 +57,22 @@ function App() {
 
   useEffect(() => {
     startGame();
+    console.log(defaultKeyColors, keyColors)
   }, []);
 
   return (
     <>
       <div className="container">
+        <div className="title">
+          <h1> WORDLE</h1>
+        </div>
         <div style={{ "display": "flex" }}>
           <div>
             {rows}
           </div>
           <div className="reset-icon-div">
-            <FaUndoAlt size={20} className="reset-icon" title="Reset" onClick={() => startGame()} />
+            <RxQuestionMark size={20} className="reset-icon" title="Hint" style={{ backgroundColor: "indianred" }} onClick={handleShow} />
+            <RxReset size={20} className="reset-icon" title="Reset" onClick={startGame} />
           </div>
         </div>
         <KeyBoard keyColors={keyColors} />
@@ -71,12 +84,32 @@ function App() {
                 : "The Answer is : " + chosenWord.toUpperCase()}
             </div>
             <div>
-              <button onClick={() => startGame()}> Try Again ? </button>
+              <button onClick={startGame}> Try Again ? </button>
             </div>
           </div>
         )}
       </div>
-
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>How To Play</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h5>Guess the Wordle in 5 tries.</h5>
+          <ul>
+            <li>Each guess must be a valid 5-letter word.</li>
+            <li>The color of the tiles will change to show how close your guess was to the word.</li>
+            <li><div className="char-box" style={{backgroundColor: "darkseagreen"}}>A</div>A is in the word and in the correct spot.</li>
+            <li><div className="char-box" style={{backgroundColor: "sandybrown"}}>B</div>B is in the word but in the wrong spot.</li>
+            <li><div className="char-box" style={{backgroundColor: "silver"}}>C</div>C is not in the word in any spot.</li>
+          </ul>
+                   
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
