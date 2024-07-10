@@ -52,7 +52,7 @@ const InputRow = ({
 
     // console.log("dis ", tryCount != rowIndex || gameStatus.gameOver)
     // console.log("val ", tryCount, rowIndex, gameStatus.gameOver)
-    // setDisabled(tryCount != rowIndex || gameStatus.gameOver)
+    setDisabled(tryCount != rowIndex || gameStatus.gameOver)
   };
 
   const validateAnswer = (answer: string) => {

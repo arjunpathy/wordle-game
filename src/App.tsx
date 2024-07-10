@@ -57,7 +57,7 @@ function App() {
 
   useEffect(() => {
     startGame();
-    console.log(defaultKeyColors, keyColors)
+    console.log(defaultKeyColors, keyColors,limit)
   }, []);
 
   return (
