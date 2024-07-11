@@ -128,9 +128,16 @@ body {
     font-size: 25px;
   }
   .reset-icon {
-    height: 20px;
-    width: 20px;
-    font-size: 15px;
+    height: 30px;
+    width: 30px;
+    font-size: 30px;
+    padding: 15%;
   }
-  
+  .reset-icon-div{
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  .keyboard-container{
+    width: 90%;
+  }
 }
