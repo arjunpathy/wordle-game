@@ -4,6 +4,8 @@
   align-content: stretch;
   justify-content: flex-start;
   align-items: center;
+  font-family: "Playwrite HU", cursive;
+
 }
 
 .letter-input-container {
@@ -89,7 +91,7 @@ body {
   height: 30px;
   width: 35px;
   border-radius: 15%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Playwrite HU", cursive;
   border: 1px solid lightgray;
   margin: 2px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -100,11 +102,12 @@ body {
   justify-content: center;
 }
 .title {
-  font-family: "Playwrite HU", cursive;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   margin-top: 5%;
+  font-size: 3rem !important;
+  letter-spacing: 30px;
 }
 .char-box {
   border: 1px solid lightgray;

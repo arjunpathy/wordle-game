@@ -64,21 +64,24 @@ const InputRow = ({
       let keys = {...keyColors};
 
       [...answer].forEach((char, index) => {
+        //  char present at right index
         if (char === chosenWord[index]) {
           entryArr.push(1);
           keys[char] = 1;
         }
+        //  char present at different index
         else if (chosenWord.includes(char)) {
           entryArr.push(2);
           keys[char] = keys[char] === 1 ? 1 : 2;
         }
+        //  char not present
         else { 
           entryArr.push(0);
           keys[char] = 0;
         }
       });
       
-      // console.log(entryArr);
+      console.log(keys);
       setAvailableChar(entryArr);
       setKeyColors(keys)
 

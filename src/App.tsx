@@ -57,14 +57,14 @@ function App() {
 
   useEffect(() => {
     startGame();
-    console.log(defaultKeyColors, keyColors,limit)
+    console.log(defaultKeyColors, keyColors, limit)
   }, []);
 
   return (
     <>
       <div className="container">
         <div className="title">
-          <h1> WORDLE</h1>
+          WORDLE
         </div>
         <div className="rows-container">
           <div>
@@ -98,11 +98,11 @@ function App() {
           <ul>
             <li>Each guess must be a valid 5-letter word.</li>
             <li>The color of the tiles will change to show how close your guess was to the word.</li>
-            <li><div className="char-box" style={{backgroundColor: "darkseagreen"}}>A</div>A is in the word and in the correct spot.</li>
-            <li><div className="char-box" style={{backgroundColor: "sandybrown"}}>B</div>B is in the word but in the wrong spot.</li>
-            <li><div className="char-box" style={{backgroundColor: "silver"}}>C</div>C is not in the word in any spot.</li>
+            <li><div className="char-box" style={{ backgroundColor: "darkseagreen" }}>A</div>A is in the word and in the correct spot.</li>
+            <li><div className="char-box" style={{ backgroundColor: "sandybrown" }}>B</div>B is in the word but in the wrong spot.</li>
+            <li><div className="char-box" style={{ backgroundColor: "silver" }}>C</div>C is not in the word in any spot.</li>
           </ul>
-                   
+
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
