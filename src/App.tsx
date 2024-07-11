@@ -7,12 +7,15 @@ import KeyBoard from "./KeyBoard";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, Button } from 'react-bootstrap';
 
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
 
 const defaultKeyColors = {
   a: 3, b: 3, c: 3, d: 3, e: 3, f: 3, g: 3, h: 3, i: 3, j: 3,
   k: 3, l: 3, m: 3, n: 3, o: 3, p: 3, q: 3, r: 3, s: 3, t: 3,
   u: 3, v: 3, w: 3, x: 3, y: 3, z: 3
 };
+
 
 function App() {
   const [chosenWord, setChosenWord] = useState("");
@@ -26,6 +29,9 @@ function App() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const { width, height } = useWindowSize()
+
 
   const startGame = () => {
     const newChosenWord = words[Math.floor(Math.random() * words.length)];
@@ -88,6 +94,10 @@ function App() {
             </div>
           </div>
         )}
+        {gameStatus.wordGuessed && <Confetti
+          width={width}
+          height={height} />
+        }
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
