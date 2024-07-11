@@ -84,7 +84,7 @@ function App() {
                 : "The Answer is : " + chosenWord.toUpperCase()}
             </div>
             <div>
-              <button onClick={startGame}> Try Again ? </button>
+              <Button onClick={startGame} className="try-again-btn"> Try Again ? </Button>
             </div>
           </div>
         )}

@@ -61,10 +61,10 @@ body {
   padding: 0 12px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
-.rows-container{
+.rows-container {
   display: flex;
-    height: 40%;
-  }
+  height: 40%;
+}
 .reset-icon-div {
   padding-top: 5%;
   padding-left: 10%;
@@ -110,7 +110,7 @@ body {
   font-style: normal;
   margin-top: 5%;
 }
-.char-box{
+.char-box {
   border: 1px solid lightgray;
   border-radius: 5px;
   width: 30px;
@@ -119,6 +119,14 @@ body {
   display: inline-block;
   margin-right: 10px;
   margin-top: 5px;
+}
+
+.try-again-btn {
+  background-color: rgb(78, 152, 156) !important;
+  border: none !important;
+}
+.try-again-btn:hover {
+  background-color: rgb(63, 123, 126)!important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -133,11 +141,11 @@ body {
     font-size: 30px;
     padding: 15%;
   }
-  .reset-icon-div{
+  .reset-icon-div {
     padding-left: 2%;
     padding-right: 2%;
   }
-  .keyboard-container{
+  .keyboard-container {
     width: 90%;
   }
 }
