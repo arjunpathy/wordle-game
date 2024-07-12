@@ -18,9 +18,9 @@ const defaultKeyColors = {
 
 
 function App() {
+  const limit = 5;
   const [chosenWord, setChosenWord] = useState("");
   const [tryCount, setTryCount] = useState(0);
-  const [limit, setLimit] = useState(5);
   const [gameStatus, setGameStatus] = useState({ 'gameOver': false, 'wordGuessed': false });
   const [rows, setRows] = useState<JSX.Element[] | null>(null);
   const [keyColors, setKeyColors] = useState<Record<string, number>>({ ...defaultKeyColors });
@@ -37,9 +37,8 @@ function App() {
     const newChosenWord = words[Math.floor(Math.random() * words.length)];
     setChosenWord(newChosenWord);
     setTryCount(0);
-    setLimit(5);
     setGameStatus({ 'gameOver': false, 'wordGuessed': false });
-    setRows(getRows(5, newChosenWord));
+    setRows(getRows(limit, newChosenWord));
     setKeyColors({ ...defaultKeyColors });
     console.log(defaultKeyColors, keyColors)
   };
