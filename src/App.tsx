@@ -22,8 +22,8 @@ function App() {
   const [chosenWord, setChosenWord] = useState("");
   const [tryCount, setTryCount] = useState(0);
   const [gameStatus, setGameStatus] = useState({ 'gameOver': false, 'wordGuessed': false });
-  const [rows, setRows] = useState<JSX.Element[] | null>(null);
   const [keyColors, setKeyColors] = useState<Record<string, number>>({ ...defaultKeyColors });
+  const [rows, setRows] = useState<JSX.Element[] | null>(null);
 
   const [show, setShow] = useState(false);
 
@@ -38,9 +38,12 @@ function App() {
     setChosenWord(newChosenWord);
     setTryCount(0);
     setGameStatus({ 'gameOver': false, 'wordGuessed': false });
+    setKeyColors({
+      a: 3, b: 3, c: 3, d: 3, e: 3, f: 3, g: 3, h: 3, i: 3, j: 3,
+      k: 3, l: 3, m: 3, n: 3, o: 3, p: 3, q: 3, r: 3, s: 3, t: 3,
+      u: 3, v: 3, w: 3, x: 3, y: 3, z: 3
+    });
     setRows(getRows(limit, newChosenWord));
-    setKeyColors({ ...defaultKeyColors });
-    console.log(defaultKeyColors, keyColors)
   };
 
   const getRows = (limit: number, chosenWord: string): JSX.Element[] => {

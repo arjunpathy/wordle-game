@@ -20,7 +20,6 @@ interface InputRowProps {
   setKeyColors: (color: Record<string, number>) => void;
 }
 
-let newTryCount = 0;
 
 const InputRow = ({
   chosenWord,
@@ -38,11 +37,13 @@ const InputRow = ({
   const [isDisabled, setDisabled] = useState(false);
 
   useEffect(() => {
-    focusFirstInput(newTryCount);
+    console.log("tryCount in parent:", tryCount);
+    focusFirstInput(tryCount);
   }, [tryCount]);
 
-  const focusFirstInput = (index: number) => {
-    const elem = document.getElementById("" + index);
+  const focusFirstInput = (count: number) => {
+    const elem = document.getElementById("" + count);
+    console.log(count, elem)
     if (elem) {
       const firstInput = elem.querySelector("input");
       if (firstInput instanceof HTMLInputElement) {
@@ -56,12 +57,12 @@ const InputRow = ({
   };
 
   const validateAnswer = (answer: string) => {
-    answer  = answer.toLocaleLowerCase();
-    console.log(chosenWord, answer);
+    answer = answer.toLocaleLowerCase();
+    console.log(chosenWord, answer, tryCount);
 
     if (words.includes(answer)) {
       let entryArr: number[] = [];
-      let keys = {...keyColors};
+      const keys = { ...keyColors };
 
       [...answer].forEach((char, index) => {
         //  char present at right index
@@ -75,25 +76,25 @@ const InputRow = ({
           keys[char] = keys[char] === 1 ? 1 : 2;
         }
         //  char not present
-        else { 
+        else {
           entryArr.push(0);
           keys[char] = 0;
         }
       });
-      
+
       console.log(keys);
       setAvailableChar(entryArr);
       setKeyColors(keys)
 
-      setTryCount((prevTryCount) => {
-        const newTryCount = prevTryCount + 1;
-        let gameStatus = { "gameOver": chosenWord === answer || newTryCount === limit, "wordGuessed": chosenWord === answer }
-        setGameStatus(gameStatus);
-        focusFirstInput(newTryCount);
-        return newTryCount;
+      setTryCount(prevTryCount => {
+        console.log("Previous try count:", prevTryCount);
+        return prevTryCount + 1;
       });
 
+      let gameStatus = { "gameOver": chosenWord === answer || tryCount === limit, "wordGuessed": chosenWord === answer }
+      setGameStatus(gameStatus);
 
+      // focusFirstInput(tryCount);
 
     } else {
       alert("Not a valid word!");
