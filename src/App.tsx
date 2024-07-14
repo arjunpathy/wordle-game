@@ -80,7 +80,8 @@ function App() {
           </div>
           <div className="reset-icon-div">
             <RxQuestionMark size={20} className="reset-icon" title="Hint" style={{ backgroundColor: "indianred" }} onClick={handleShow} />
-            <RxReset size={20} className="reset-icon" title="Reset" onClick={startGame} />
+            {/* <RxReset size={20} className="reset-icon" title="Reset" onClick={startGame} /> */}
+            <RxReset size={20} className="reset-icon" title="Reset" onClick={()=> location.reload()}/>
           </div>
         </div>
         <KeyBoard keyColors={keyColors} />
@@ -92,7 +93,8 @@ function App() {
                 : "The Answer is : " + chosenWord.toUpperCase()}
             </div>
             <div>
-              <Button onClick={startGame} className="try-again-btn"> Try Again ? </Button>
+              {/* <Button onClick={startGame} className="try-again-btn"> Try Again ? </Button> */}
+              <Button onClick={()=> location.reload()} className="try-again-btn"> Try Again ? </Button>
             </div>
           </div>
         )}
