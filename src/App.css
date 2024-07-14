@@ -153,4 +153,8 @@ body {
   .keyboard-container {
     width: 90%;
   }
+  .title{
+    font-size: 2.5rem !important;
+    letter-spacing: 20px !important;
+  } 
 }
