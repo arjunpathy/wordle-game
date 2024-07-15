@@ -7,7 +7,6 @@ interface GameStatus {
   wordGuessed: boolean;
 }
 
-
 interface InputRowProps {
   limit: number;
   chosenWord: string;
@@ -40,7 +39,11 @@ const InputRow = ({
     console.log("tryCount in parent:", tryCount);
     focusFirstInput(tryCount);
   }, [tryCount]);
-
+  
+  useEffect(() => {
+    focusFirstInput(0);
+  }, []);
+  
   const focusFirstInput = (count: number) => {
     const elem = document.getElementById("" + count);
     console.log(count, elem)
@@ -86,15 +89,14 @@ const InputRow = ({
       setAvailableChar(entryArr);
       setKeyColors(keys)
 
+      
       setTryCount(prevTryCount => {
-        console.log("Previous try count:", prevTryCount);
-        return prevTryCount + 1;
+        const newTryCount = prevTryCount + 1;
+        const newGameStatus = { "gameOver": chosenWord === answer || newTryCount >= limit, "wordGuessed": chosenWord === answer };
+        setGameStatus(newGameStatus);
+        focusFirstInput(newTryCount);
+        return newTryCount;
       });
-
-      let gameStatus = { "gameOver": chosenWord === answer || tryCount === limit, "wordGuessed": chosenWord === answer }
-      setGameStatus(gameStatus);
-
-      // focusFirstInput(tryCount);
 
     } else {
       alert("Not a valid word!");

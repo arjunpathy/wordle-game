@@ -80,8 +80,8 @@ function App() {
           </div>
           <div className="reset-icon-div">
             <RxQuestionMark size={20} className="reset-icon" title="Hint" style={{ backgroundColor: "indianred" }} onClick={handleShow} />
-            {/* <RxReset size={20} className="reset-icon" title="Reset" onClick={startGame} /> */}
-            <RxReset size={20} className="reset-icon" title="Reset" onClick={()=> location.reload()}/>
+            <RxReset size={20} className="reset-icon" title="Reset" onClick={startGame} />
+            {/* <RxReset size={20} className="reset-icon" title="Reset" onClick={()=> location.reload()}/> */}
           </div>
         </div>
         <KeyBoard keyColors={keyColors} />
