@@ -117,6 +117,13 @@ body {
   font-size: 3rem !important;
   letter-spacing: 25px;
 }
+.stat-bar{
+  margin: 5px;
+  font-weight: bold;
+}
+.stat-bar span{
+  margin-right: 20px;
+}
 .char-box {
   border: 1px solid lightgray;
   border-radius: 5px;

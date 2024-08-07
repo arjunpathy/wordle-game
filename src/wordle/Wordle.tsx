@@ -22,6 +22,7 @@ const defaultKeyColors = {
 
 const Wordle = () => {
   const guessLimit = 6;
+  const [stat, setStat] = useState({ tries: 0, score: 0 })
 
   const [chosenWord, setChosenWord] = useState("");
   const [tryCount, setTryCount] = useState(0);
@@ -78,6 +79,12 @@ const Wordle = () => {
     if (chosenWord) {
       let status = { 'gameOver': (tryCount === guessLimit || chosenWord === guessedAnswer), 'wordGuessed': chosenWord === guessedAnswer }
       setGameStatus(status)
+      if (status.gameOver) {
+        let newStat = { ...stat };
+        newStat.tries += 1;
+        newStat.score = status.wordGuessed ? newStat.score + 1 : newStat.score;
+        setStat({ ...newStat })
+      }
     }
   }, [tryCount, guessedAnswer, chosenWord]);
 
@@ -130,6 +137,10 @@ const Wordle = () => {
 
         <div className="title">
           WORDLE
+        </div>
+        <div className="stat-bar">
+          <span>Played : {stat.tries}</span>
+          <span>Won : {stat.score}</span>
         </div>
         <div className="rows-container">
           <div>
