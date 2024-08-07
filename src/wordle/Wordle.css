@@ -148,6 +148,10 @@ body {
 .hide {
   display: none;
 }
+.toast-position {
+  top: 10% !important;
+  right: 0 !important;
+}
 @media only screen and (max-width: 600px) {
   .letter-input {
     width: 50px;
@@ -170,5 +174,8 @@ body {
   .title {
     font-size: 2.5rem !important;
     letter-spacing: 20px !important;
+  }
+  .toast-position {
+    top: 85% !important;
   }
 }

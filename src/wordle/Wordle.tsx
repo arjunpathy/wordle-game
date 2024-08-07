@@ -68,7 +68,7 @@ const Wordle = () => {
   useEffect(() => {
     if (toastShow) {
       const timer = setTimeout(() => {
-        setToastShow(false);
+        // setToastShow(false);
       }, 2500);
       return () => clearTimeout(timer);
     }
@@ -154,9 +154,9 @@ const Wordle = () => {
             <RxReset size={20} className="reset-icon" title="Reset" onClick={startGame} />
           </div>
         </div>
-        <ToastComponent toastShow={toastShow} setToastShow={setToastShow} />
 
         < KeyBoard keyColors={keyColors} />
+        <ToastComponent toastShow={toastShow} setToastShow={setToastShow} />
         < InstructionsModal show={show} setShow={setShow} />
         {gameStatus.gameOver && (
           <div className="message-box">

@@ -10,7 +10,7 @@ const ToastComponent = ({ toastShow, setToastShow }: ToastProps) => {
         console.log(toastShow)
     }
     return (
-        <div className="position-fixed top-0 end-0 p-3" style={{ "zIndex": 11 }}>
+        <div className="position-fixed p-3 toast-position" style={{ "zIndex": 11 }}>
             <div id="liveToast" className={toastShow ? "toast show" : "toast hide"} role="alert" aria-live="assertive" aria-atomic="true">
                 <div className="toast-header">
                     <strong className="me-auto">Wordle</strong>
