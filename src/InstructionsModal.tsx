@@ -8,7 +8,6 @@ interface InstructionsModalProps {
 
 const InstructionsModal = ({ show, setShow }: InstructionsModalProps) => {
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     return (
         <Modal show={show} onHide={handleClose}>
