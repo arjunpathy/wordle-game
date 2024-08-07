@@ -68,7 +68,7 @@ const Wordle = () => {
   useEffect(() => {
     if (toastShow) {
       const timer = setTimeout(() => {
-        // setToastShow(false);
+        setToastShow(false);
       }, 2500);
       return () => clearTimeout(timer);
     }
