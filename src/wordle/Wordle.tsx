@@ -22,6 +22,7 @@ const defaultKeyColors = {
 
 const Wordle = () => {
   const guessLimit = 6;
+  const portFolioLink = "https://bit.ly/arjunpathy";
   const [stat, setStat] = useState({ tries: 0, score: 0 })
 
   const [chosenWord, setChosenWord] = useState("");
@@ -186,6 +187,11 @@ const Wordle = () => {
           height={height} />
         }
       </div>
+      <footer className="footer">
+        <a href={portFolioLink} target="_blank">
+          © arjunpathy
+        </a>
+      </footer>
     </>
   );
 };

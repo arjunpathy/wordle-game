@@ -117,11 +117,11 @@ body {
   font-size: 3rem !important;
   letter-spacing: 25px;
 }
-.stat-bar{
+.stat-bar {
   margin: 5px;
   font-weight: bold;
 }
-.stat-bar span{
+.stat-bar span {
   margin-right: 20px;
 }
 .char-box {
@@ -158,6 +158,18 @@ body {
 .toast-position {
   top: 10% !important;
   right: 0 !important;
+}
+.footer {
+  position: relative;
+  font-size: 1rem;
+  width: fit-content;
+  top: 16vh;
+  left: 72vw;
+}
+.footer a {
+  text-decoration: none !important;
+  cursor: pointer;
+  color: darkgreen;
 }
 @media only screen and (max-width: 600px) {
   .letter-input {
