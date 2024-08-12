@@ -183,7 +183,7 @@ const Wordle = () => {
           </div>
         )}
         {gameStatus.wordGuessed && <Confetti
-          width={width}
+          width={width - 100}
           height={height} />
         }
       </div>
