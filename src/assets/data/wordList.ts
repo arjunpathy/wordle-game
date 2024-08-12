@@ -493,6 +493,7 @@ const words = [
   "chops",
   "chord",
   "chose",
+  "chore",
   "chuck",
   "chump",
   "chums",

@@ -15,7 +15,7 @@ const InstructionsModal = ({ show, setShow }: InstructionsModalProps) => {
                 <Modal.Title>How To Play</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h5>Guess the Wordle in 5 tries.</h5>
+                <h5>Guess the Wordle in 6 tries.</h5>
                 <ul>
                     <li>Each guess must be a valid 5-letter word.</li>
                     <li>The color of the tiles will change to show how close your guess was to the word.</li>
