@@ -47,7 +47,7 @@ const Wordle = () => {
 
   const startGame = () => {
     const newChosenWord = words[Math.floor(Math.random() * words.length)];
-    console.log("Answer : ", newChosenWord);
+    // console.log("Answer : ", newChosenWord);
     setChosenWord(newChosenWord);
 
     setTryCount(0);
