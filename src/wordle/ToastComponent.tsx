@@ -5,7 +5,7 @@ interface ToastProps {
     setToastShow: (toastShow: boolean) => void
 }
 const ToastComponent = ({ toastShow, setToastShow }: ToastProps) => {
-    let handleclick = () => {
+    const handleclick = () => {
         setToastShow(false)
         console.log(toastShow)
     }

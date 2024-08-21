@@ -57,10 +57,10 @@ const RowComponent = ({
     };
 
     useEffect(() => {
-        let ele = document.getElementById(`${tryCount + 1}:0`) as HTMLInputElement | null;
+        const ele = document.getElementById(`${tryCount + 1}:0`) as HTMLInputElement | null;
         setElement(ele)
         element?.focus();
-    }, [tryCount])
+    }, [tryCount, element])
 
     return (
         <div className={"letter-input-container " + (!gameOver && index === tryCount ? 'row-focus' : '')} id={"" + index}>

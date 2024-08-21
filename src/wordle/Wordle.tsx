@@ -5,7 +5,7 @@ import "./Wordle.css";
 // import { Button } from 'react-bootstrap';
 import { RxReset, RxQuestionMark } from "react-icons/rx";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Modal, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
@@ -47,7 +47,7 @@ const Wordle = () => {
 
   const startGame = () => {
     const newChosenWord = words[Math.floor(Math.random() * words.length)];
-    // console.log("Answer : ", newChosenWord);
+    console.log("Answer : ", newChosenWord);
     setChosenWord(newChosenWord);
 
     setTryCount(0);
@@ -64,7 +64,7 @@ const Wordle = () => {
   }, []);
 
   useEffect(() => {
-    let ele = document.getElementById(`${tryCount}:0`) as HTMLInputElement | null;
+    const ele = document.getElementById(`${tryCount}:0`) as HTMLInputElement | null;
     ele?.focus();
   }, [tryCount]);
 
@@ -79,16 +79,16 @@ const Wordle = () => {
 
   useEffect(() => {
     if (chosenWord) {
-      let status = { 'gameOver': (tryCount === guessLimit || chosenWord === guessedAnswer), 'wordGuessed': chosenWord === guessedAnswer }
+      const status = { 'gameOver': (tryCount === guessLimit || chosenWord === guessedAnswer), 'wordGuessed': chosenWord === guessedAnswer }
       setGameStatus(status)
       if (status.gameOver) {
-        let newStat = { ...stat };
+        const newStat = { ...stat };
         newStat.tries += 1;
         newStat.score = status.wordGuessed ? newStat.score + 1 : newStat.score;
         setStat({ ...newStat })
       }
     }
-  }, [tryCount, guessedAnswer, chosenWord]);
+  }, [tryCount, guessedAnswer, chosenWord, stat]);
 
 
   const validateAnswer = (word: string) => {
@@ -96,7 +96,7 @@ const Wordle = () => {
       console.log(chosenWord, word, tryCount);
       if (words.includes(word)) {
         setGuessedAnswer(word);
-        let entryArr: number[] = [];
+        const entryArr: number[] = [];
         const keys = { ...keyColors };
 
         [...word].forEach((char, index) => {
