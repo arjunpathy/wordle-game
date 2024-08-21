@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import words from "../assets/data/wordList";
 import RowComponent from "./RowComponent";
 import "./Wordle.css";
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 import { RxReset, RxQuestionMark } from "react-icons/rx";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Modal, Button } from 'react-bootstrap';
 
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
@@ -46,7 +47,7 @@ const Wordle = () => {
 
   const startGame = () => {
     const newChosenWord = words[Math.floor(Math.random() * words.length)];
-    console.log("Answer : ", newChosenWord);
+    // console.log("Answer : ", newChosenWord);
     setChosenWord(newChosenWord);
 
     setTryCount(0);
@@ -187,6 +188,8 @@ const Wordle = () => {
           height={height} />
         }
       </div>
+
+
       <footer className="footer">
         <a href={portFolioLink} target="_blank">
           © arjunpathy
