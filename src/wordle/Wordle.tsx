@@ -88,7 +88,7 @@ const Wordle = () => {
         setStat({ ...newStat })
       }
     }
-  }, [tryCount, guessedAnswer, chosenWord, stat]);
+  }, [tryCount, guessedAnswer, chosenWord]);
 
 
   const validateAnswer = (word: string) => {
